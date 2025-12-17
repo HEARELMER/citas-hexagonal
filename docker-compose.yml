@@ -1,0 +1,23 @@
+version: "3.9"
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: citas-postgres
+    environment:
+      POSTGRES_DB: citasdb
+      POSTGRES_USER: citas
+      POSTGRES_PASSWORD: citas
+    ports:
+      - "5432:5432"
+    volumes:
+      - citas_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U citas"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 15s
+
+volumes:
+  citas_pgdata:
