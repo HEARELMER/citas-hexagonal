@@ -3,51 +3,28 @@ package org.hearelmer.citas.infrastructure.web.dto;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
-import org.hearelmer.citas.domain.model.CitaEstado;
 
 public class CitaRequestDto {
 
     @NotNull
     @FutureOrPresent
-    private LocalDateTime fechaHora;
+    private LocalDateTime fechaProgramada;
 
-    @NotNull
-    private Long pacienteId;
+    private String estado;
 
-    @NotNull
-    private Long medicoId;
-
-    private CitaEstado estado;
-
-    public LocalDateTime getFechaHora() {
-        return fechaHora;
+    public LocalDateTime getFechaProgramada() {
+        return fechaProgramada;
     }
 
-    public void setFechaHora(LocalDateTime fechaHora) {
-        this.fechaHora = fechaHora;
+    public void setFechaProgramada(LocalDateTime fechaProgramada) {
+        this.fechaProgramada = fechaProgramada;
     }
 
-    public Long getPacienteId() {
-        return pacienteId;
-    }
-
-    public void setPacienteId(Long pacienteId) {
-        this.pacienteId = pacienteId;
-    }
-
-    public Long getMedicoId() {
-        return medicoId;
-    }
-
-    public void setMedicoId(Long medicoId) {
-        this.medicoId = medicoId;
-    }
-
-    public CitaEstado getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(CitaEstado estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 }

@@ -1,9 +1,6 @@
 package org.hearelmer.citas.infrastructure.persistence.mapper;
 
 import org.hearelmer.citas.domain.model.Cita;
-import org.hearelmer.citas.domain.valueObject.FechaHoraCita;
-import org.hearelmer.citas.domain.valueObject.MedicoId;
-import org.hearelmer.citas.domain.valueObject.PacienteId;
 import org.hearelmer.citas.infrastructure.persistence.jpa.entity.CitaJpaEntity;
 import org.springframework.stereotype.Component;
 
@@ -15,10 +12,9 @@ public class CitaMapper {
             return null;
         }
         return CitaJpaEntity.builder()
-                .id(cita.getId())
-            .fechaHora(cita.getFechaHora().value())
-            .pacienteId(cita.getPacienteId().value())
-            .medicoId(cita.getMedicoId().value())
+                .idCita(cita.getIdCita())
+                .fechaRegistro(cita.getFechaRegistro())
+                .fechaProgramada(cita.getFechaProgramada())
                 .estado(cita.getEstado())
                 .build();
     }
@@ -28,10 +24,9 @@ public class CitaMapper {
             return null;
         }
         return new Cita(
-                entity.getId(),
-            new FechaHoraCita(entity.getFechaHora()),
-            new PacienteId(entity.getPacienteId()),
-            new MedicoId(entity.getMedicoId()),
+                entity.getIdCita(),
+                entity.getFechaRegistro(),
+                entity.getFechaProgramada(),
                 entity.getEstado()
         );
     }

@@ -16,9 +16,8 @@ public class JpaCitaAdapter implements ICitaRepositoryPort {
     private final CitaMapper mapper;
 
     @Override
-    public Cita guardar(Cita cita) {
+    public void save(Cita cita) {
         CitaJpaEntity entity = mapper.toEntity(cita);
-        CitaJpaEntity persisted = springDataCitaRepository.save(entity);
-        return mapper.toDomain(persisted);
+        springDataCitaRepository.save(entity);
     }
 }

@@ -1,64 +1,53 @@
 package org.hearelmer.citas.infrastructure.web.dto;
 
 import java.time.LocalDateTime;
-import org.hearelmer.citas.domain.model.CitaEstado;
 
 public class CitaResponseDto {
 
-    private Long id;
-    private LocalDateTime fechaHora;
-    private Long pacienteId;
-    private Long medicoId;
-    private CitaEstado estado;
+    private Integer idCita;
+    private LocalDateTime fechaRegistro;
+    private LocalDateTime fechaProgramada;
+    private String estado;
 
     public CitaResponseDto() {
     }
 
-    public CitaResponseDto(Long id, LocalDateTime fechaHora, Long pacienteId, Long medicoId, CitaEstado estado) {
-        this.id = id;
-        this.fechaHora = fechaHora;
-        this.pacienteId = pacienteId;
-        this.medicoId = medicoId;
+    public CitaResponseDto(Integer idCita, LocalDateTime fechaRegistro, LocalDateTime fechaProgramada, String estado) {
+        this.idCita = idCita;
+        this.fechaRegistro = fechaRegistro;
+        this.fechaProgramada = fechaProgramada;
         this.estado = estado;
     }
 
-    public Long getId() {
-        return id;
+    public Integer getIdCita() {
+        return idCita;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setIdCita(Integer idCita) {
+        this.idCita = idCita;
     }
 
-    public LocalDateTime getFechaHora() {
-        return fechaHora;
+    public LocalDateTime getFechaRegistro() {
+        return fechaRegistro;
     }
 
-    public void setFechaHora(LocalDateTime fechaHora) {
-        this.fechaHora = fechaHora;
+    public void setFechaRegistro(LocalDateTime fechaRegistro) {
+        this.fechaRegistro = fechaRegistro;
     }
 
-    public Long getPacienteId() {
-        return pacienteId;
+    public LocalDateTime getFechaProgramada() {
+        return fechaProgramada;
     }
 
-    public void setPacienteId(Long pacienteId) {
-        this.pacienteId = pacienteId;
+    public void setFechaProgramada(LocalDateTime fechaProgramada) {
+        this.fechaProgramada = fechaProgramada;
     }
 
-    public Long getMedicoId() {
-        return medicoId;
-    }
-
-    public void setMedicoId(Long medicoId) {
-        this.medicoId = medicoId;
-    }
-
-    public CitaEstado getEstado() {
+    public String getEstado() {
         return estado;
     }
 
-    public void setEstado(CitaEstado estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 }

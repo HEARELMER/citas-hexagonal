@@ -1,10 +1,7 @@
 package org.hearelmer.citas.infrastructure.web.mapper;
 
+import java.time.LocalDateTime;
 import org.hearelmer.citas.domain.model.Cita;
-import org.hearelmer.citas.domain.model.CitaEstado;
-import org.hearelmer.citas.domain.valueObject.FechaHoraCita;
-import org.hearelmer.citas.domain.valueObject.MedicoId;
-import org.hearelmer.citas.domain.valueObject.PacienteId;
 import org.hearelmer.citas.infrastructure.web.dto.CitaRequestDto;
 import org.hearelmer.citas.infrastructure.web.dto.CitaResponseDto;
 import org.springframework.stereotype.Component;
@@ -16,12 +13,11 @@ public class CitaWebMapper {
         if (request == null) {
             return null;
         }
-        CitaEstado estado = request.getEstado() != null ? request.getEstado() : CitaEstado.PENDIENTE;
+        String estado = request.getEstado() != null ? request.getEstado() : "PENDIENTE";
         return new Cita(
                 null,
-            new FechaHoraCita(request.getFechaHora()),
-            new PacienteId(request.getPacienteId()),
-            new MedicoId(request.getMedicoId()),
+                LocalDateTime.now(),
+                request.getFechaProgramada(),
                 estado
         );
     }
@@ -31,10 +27,9 @@ public class CitaWebMapper {
             return null;
         }
         return new CitaResponseDto(
-                cita.getId(),
-            cita.getFechaHora().value(),
-            cita.getPacienteId().value(),
-            cita.getMedicoId().value(),
+                cita.getIdCita(),
+                cita.getFechaRegistro(),
+                cita.getFechaProgramada(),
                 cita.getEstado()
         );
     }

@@ -4,5 +4,5 @@ import org.hearelmer.citas.domain.model.Cita;
 
 public interface ICitaRepositoryPort {
 
-    Cita guardar(Cita cita);
+    void save(Cita cita);
 }

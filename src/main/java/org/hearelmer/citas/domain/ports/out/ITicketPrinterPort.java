@@ -1,8 +1,8 @@
 package org.hearelmer.citas.domain.ports.out;
 
-import org.hearelmer.citas.domain.model.Cita;
+import org.hearelmer.citas.domain.model.Ticket;
 
 public interface ITicketPrinterPort {
 
-    void imprimirTicket(Cita cita);
+    void imprimir(Ticket ticket);
 }

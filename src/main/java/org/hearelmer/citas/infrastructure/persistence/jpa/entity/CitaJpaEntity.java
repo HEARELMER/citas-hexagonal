@@ -2,8 +2,6 @@ package org.hearelmer.citas.infrastructure.persistence.jpa.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,7 +11,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hearelmer.citas.domain.model.CitaEstado;
 
 @Entity
 @Table(name = "citas")
@@ -25,18 +22,15 @@ public class CitaJpaEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id_cita")
+    private Integer idCita;
 
-    @Column(name = "fecha_hora", nullable = false)
-    private LocalDateTime fechaHora;
+    @Column(name = "fecha_registro", nullable = false)
+    private LocalDateTime fechaRegistro;
 
-    @Column(name = "paciente_id", nullable = false)
-    private Long pacienteId;
+    @Column(name = "fecha_programada", nullable = false)
+    private LocalDateTime fechaProgramada;
 
-    @Column(name = "medico_id", nullable = false)
-    private Long medicoId;
-
-    @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private CitaEstado estado;
+    private String estado;
 }
