@@ -2,6 +2,9 @@ package org.hearelmer.citas.infrastructure.web.mapper;
 
 import org.hearelmer.citas.domain.model.Cita;
 import org.hearelmer.citas.domain.model.CitaEstado;
+import org.hearelmer.citas.domain.valueObject.FechaHoraCita;
+import org.hearelmer.citas.domain.valueObject.MedicoId;
+import org.hearelmer.citas.domain.valueObject.PacienteId;
 import org.hearelmer.citas.infrastructure.web.dto.CitaRequestDto;
 import org.hearelmer.citas.infrastructure.web.dto.CitaResponseDto;
 import org.springframework.stereotype.Component;
@@ -16,9 +19,9 @@ public class CitaWebMapper {
         CitaEstado estado = request.getEstado() != null ? request.getEstado() : CitaEstado.PENDIENTE;
         return new Cita(
                 null,
-                request.getFechaHora(),
-                request.getPacienteId(),
-                request.getMedicoId(),
+            new FechaHoraCita(request.getFechaHora()),
+            new PacienteId(request.getPacienteId()),
+            new MedicoId(request.getMedicoId()),
                 estado
         );
     }
@@ -29,9 +32,9 @@ public class CitaWebMapper {
         }
         return new CitaResponseDto(
                 cita.getId(),
-                cita.getFechaHora(),
-                cita.getPacienteId(),
-                cita.getMedicoId(),
+            cita.getFechaHora().value(),
+            cita.getPacienteId().value(),
+            cita.getMedicoId().value(),
                 cita.getEstado()
         );
     }

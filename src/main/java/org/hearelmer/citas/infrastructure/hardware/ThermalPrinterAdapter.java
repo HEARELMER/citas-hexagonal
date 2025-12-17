@@ -13,6 +13,10 @@ public class ThermalPrinterAdapter implements ITicketPrinterPort {
     public void imprimirTicket(Cita cita) {
         // Simula impresión de ticket en la consola
         log.info("Imprimiendo ticket para la cita: id={}, fechaHora={}, pacienteId={}, medicoId={}, estado={}",
-                cita.getId(), cita.getFechaHora(), cita.getPacienteId(), cita.getMedicoId(), cita.getEstado());
+            cita.getId(),
+            cita.getFechaHora().value(),
+            cita.getPacienteId().value(),
+            cita.getMedicoId().value(),
+            cita.getEstado());
     }
 }

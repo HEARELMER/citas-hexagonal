@@ -1,6 +1,9 @@
 package org.hearelmer.citas.domain.model;
 
-import java.time.LocalDateTime;
+import org.hearelmer.citas.domain.valueObject.FechaHoraCita;
+import org.hearelmer.citas.domain.valueObject.MedicoId;
+import org.hearelmer.citas.domain.valueObject.PacienteId;
+
 import java.util.Objects;
 
 /**
@@ -9,12 +12,12 @@ import java.util.Objects;
 public class Cita {
 
     private final Long id;
-    private final LocalDateTime fechaHora;
-    private final Long pacienteId;
-    private final Long medicoId;
+    private final FechaHoraCita fechaHora;
+    private final PacienteId pacienteId;
+    private final MedicoId medicoId;
     private final CitaEstado estado;
 
-    public Cita(Long id, LocalDateTime fechaHora, Long pacienteId, Long medicoId, CitaEstado estado) {
+    public Cita(Long id, FechaHoraCita fechaHora, PacienteId pacienteId, MedicoId medicoId, CitaEstado estado) {
         this.id = id;
         this.fechaHora = Objects.requireNonNull(fechaHora, "fechaHora es requerida");
         this.pacienteId = Objects.requireNonNull(pacienteId, "pacienteId es requerido");
@@ -26,15 +29,15 @@ public class Cita {
         return id;
     }
 
-    public LocalDateTime getFechaHora() {
+    public FechaHoraCita getFechaHora() {
         return fechaHora;
     }
 
-    public Long getPacienteId() {
+    public PacienteId getPacienteId() {
         return pacienteId;
     }
 
-    public Long getMedicoId() {
+    public MedicoId getMedicoId() {
         return medicoId;
     }
 
